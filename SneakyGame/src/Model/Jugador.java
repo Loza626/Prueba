@@ -53,11 +53,11 @@ public class Jugador implements Serializable {
     @Lob
     @Column(name = "Password")
     private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jugador")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJugadorUno")
     private Collection<Competencia> competenciaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jugador1")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJugadorDos")
     private Collection<Competencia> competenciaCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jugador")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idjugador")
     private Collection<Juegoindividual> juegoindividualCollection;
 
     public Jugador() {
@@ -172,5 +172,5 @@ public class Jugador implements Serializable {
     public String toString() {
         return "Model.Jugador[ id=" + id + " ]";
     }
-
+    
 }

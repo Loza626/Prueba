@@ -32,8 +32,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Competencia.findById", query = "SELECT c FROM Competencia c WHERE c.id = :id"),
     @NamedQuery(name = "Competencia.findByInicio", query = "SELECT c FROM Competencia c WHERE c.inicio = :inicio"),
     @NamedQuery(name = "Competencia.findByFin", query = "SELECT c FROM Competencia c WHERE c.fin = :fin"),
-    @NamedQuery(name = "Competencia.findByIdJugadorGanador", query = "SELECT c FROM Competencia c WHERE c.idJugadorGanador = :idJugadorGanador"),
-    @NamedQuery(name = "Competencia.findByFichaJugadorUno", query = "SELECT c FROM Competencia c WHERE c.fichaJugadorUno = :fichaJugadorUno")})
+    @NamedQuery(name = "Competencia.findByIdJugadorGanador", query = "SELECT c FROM Competencia c WHERE c.idJugadorGanador = :idJugadorGanador")})
 public class Competencia implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,31 +51,28 @@ public class Competencia implements Serializable {
     @Basic(optional = false)
     @Column(name = "IdJugadorGanador")
     private int idJugadorGanador;
-    @Basic(optional = false)
-    @Column(name = "FichaJugadorUno")
-    private int fichaJugadorUno;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "competencia")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompentencia")
     private Collection<Tiro> tiroCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "competencia")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompetencia")
     private Collection<Escalera> escaleraCollection;
     @JoinColumn(name = "IdFichaJugadorDos", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Ficha ficha;
+    private Ficha idFichaJugadorDos;
     @JoinColumn(name = "IdFichaJugadorUno", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Ficha ficha1;
+    private Ficha idFichaJugadorUno;
     @JoinColumn(name = "IdJugadorUno", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Jugador jugador;
+    private Jugador idJugadorUno;
     @JoinColumn(name = "IdJugadorDos", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Jugador jugador1;
+    private Jugador idJugadorDos;
     @JoinColumn(name = "IdTablero", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Tablero tablero;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "competencia")
+    private Tablero idTablero;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompetencia")
     private Collection<Desbanco> desbancoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "competencia")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompentencia")
     private Collection<Serpiente> serpienteCollection;
 
     public Competencia() {
@@ -86,12 +82,11 @@ public class Competencia implements Serializable {
         this.id = id;
     }
 
-    public Competencia(Integer id, Date inicio, Date fin, int idJugadorGanador, int fichaJugadorUno) {
+    public Competencia(Integer id, Date inicio, Date fin, int idJugadorGanador) {
         this.id = id;
         this.inicio = inicio;
         this.fin = fin;
         this.idJugadorGanador = idJugadorGanador;
-        this.fichaJugadorUno = fichaJugadorUno;
     }
 
     public Integer getId() {
@@ -126,14 +121,6 @@ public class Competencia implements Serializable {
         this.idJugadorGanador = idJugadorGanador;
     }
 
-    public int getFichaJugadorUno() {
-        return fichaJugadorUno;
-    }
-
-    public void setFichaJugadorUno(int fichaJugadorUno) {
-        this.fichaJugadorUno = fichaJugadorUno;
-    }
-
     public Collection<Tiro> getTiroCollection() {
         return tiroCollection;
     }
@@ -150,44 +137,44 @@ public class Competencia implements Serializable {
         this.escaleraCollection = escaleraCollection;
     }
 
-    public Ficha getFicha() {
-        return ficha;
+    public Ficha getIdFichaJugadorDos() {
+        return idFichaJugadorDos;
     }
 
-    public void setFicha(Ficha ficha) {
-        this.ficha = ficha;
+    public void setIdFichaJugadorDos(Ficha idFichaJugadorDos) {
+        this.idFichaJugadorDos = idFichaJugadorDos;
     }
 
-    public Ficha getFicha1() {
-        return ficha1;
+    public Ficha getIdFichaJugadorUno() {
+        return idFichaJugadorUno;
     }
 
-    public void setFicha1(Ficha ficha1) {
-        this.ficha1 = ficha1;
+    public void setIdFichaJugadorUno(Ficha idFichaJugadorUno) {
+        this.idFichaJugadorUno = idFichaJugadorUno;
     }
 
-    public Jugador getJugador() {
-        return jugador;
+    public Jugador getIdJugadorUno() {
+        return idJugadorUno;
     }
 
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
+    public void setIdJugadorUno(Jugador idJugadorUno) {
+        this.idJugadorUno = idJugadorUno;
     }
 
-    public Jugador getJugador1() {
-        return jugador1;
+    public Jugador getIdJugadorDos() {
+        return idJugadorDos;
     }
 
-    public void setJugador1(Jugador jugador1) {
-        this.jugador1 = jugador1;
+    public void setIdJugadorDos(Jugador idJugadorDos) {
+        this.idJugadorDos = idJugadorDos;
     }
 
-    public Tablero getTablero() {
-        return tablero;
+    public Tablero getIdTablero() {
+        return idTablero;
     }
 
-    public void setTablero(Tablero tablero) {
-        this.tablero = tablero;
+    public void setIdTablero(Tablero idTablero) {
+        this.idTablero = idTablero;
     }
 
     public Collection<Desbanco> getDesbancoCollection() {

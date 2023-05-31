@@ -41,7 +41,7 @@ public class Escalera implements Serializable {
     private int numVeces;
     @JoinColumn(name = "IdCompetencia", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Competencia competencia;
+    private Competencia idCompetencia;
 
     public Escalera() {
     }
@@ -80,12 +80,12 @@ public class Escalera implements Serializable {
         this.numVeces = numVeces;
     }
 
-    public Competencia getCompetencia() {
-        return competencia;
+    public Competencia getIdCompetencia() {
+        return idCompetencia;
     }
 
-    public void setCompetencia(Competencia competencia) {
-        this.competencia = competencia;
+    public void setIdCompetencia(Competencia idCompetencia) {
+        this.idCompetencia = idCompetencia;
     }
 
     @Override

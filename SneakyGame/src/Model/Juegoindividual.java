@@ -58,13 +58,13 @@ public class Juegoindividual implements Serializable {
     private int tiros;
     @JoinColumn(name = "IdFicha", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Ficha ficha;
+    private Ficha idFicha;
     @JoinColumn(name = "Idjugador", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Jugador jugador;
+    private Jugador idjugador;
     @JoinColumn(name = "IdTablero", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Tablero tablero;
+    private Tablero idTablero;
 
     public Juegoindividual() {
     }
@@ -130,28 +130,28 @@ public class Juegoindividual implements Serializable {
         this.tiros = tiros;
     }
 
-    public Ficha getFicha() {
-        return ficha;
+    public Ficha getIdFicha() {
+        return idFicha;
     }
 
-    public void setFicha(Ficha ficha) {
-        this.ficha = ficha;
+    public void setIdFicha(Ficha idFicha) {
+        this.idFicha = idFicha;
     }
 
-    public Jugador getJugador() {
-        return jugador;
+    public Jugador getIdjugador() {
+        return idjugador;
     }
 
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
+    public void setIdjugador(Jugador idjugador) {
+        this.idjugador = idjugador;
     }
 
-    public Tablero getTablero() {
-        return tablero;
+    public Tablero getIdTablero() {
+        return idTablero;
     }
 
-    public void setTablero(Tablero tablero) {
-        this.tablero = tablero;
+    public void setIdTablero(Tablero idTablero) {
+        this.idTablero = idTablero;
     }
 
     @Override

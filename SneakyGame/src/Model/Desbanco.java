@@ -41,7 +41,7 @@ public class Desbanco implements Serializable {
     private int cantVeces;
     @JoinColumn(name = "IdCompetencia", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Competencia competencia;
+    private Competencia idCompetencia;
 
     public Desbanco() {
     }
@@ -80,12 +80,12 @@ public class Desbanco implements Serializable {
         this.cantVeces = cantVeces;
     }
 
-    public Competencia getCompetencia() {
-        return competencia;
+    public Competencia getIdCompetencia() {
+        return idCompetencia;
     }
 
-    public void setCompetencia(Competencia competencia) {
-        this.competencia = competencia;
+    public void setIdCompetencia(Competencia idCompetencia) {
+        this.idCompetencia = idCompetencia;
     }
 
     @Override
