@@ -36,11 +36,11 @@ public class Ficha implements Serializable {
     @Basic(optional = false)
     @Column(name = "Imagen")
     private String imagen;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaJugadorDos")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ficha")
     private Collection<Competencia> competenciaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFichaJugadorUno")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ficha1")
     private Collection<Competencia> competenciaCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFicha")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ficha")
     private Collection<Juegoindividual> juegoindividualCollection;
 
     public Ficha() {

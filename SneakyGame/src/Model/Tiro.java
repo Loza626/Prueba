@@ -41,7 +41,7 @@ public class Tiro implements Serializable {
     private int numTiros;
     @JoinColumn(name = "IdCompentencia", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Competencia idCompentencia;
+    private Competencia competencia;
 
     public Tiro() {
     }
@@ -80,12 +80,12 @@ public class Tiro implements Serializable {
         this.numTiros = numTiros;
     }
 
-    public Competencia getIdCompentencia() {
-        return idCompentencia;
+    public Competencia getCompetencia() {
+        return competencia;
     }
 
-    public void setIdCompentencia(Competencia idCompentencia) {
-        this.idCompentencia = idCompentencia;
+    public void setCompetencia(Competencia competencia) {
+        this.competencia = competencia;
     }
 
     @Override

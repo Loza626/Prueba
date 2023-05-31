@@ -52,9 +52,9 @@ public class Tablero implements Serializable {
     @Basic(optional = false)
     @Column(name = "CasillasEscaleras")
     private int casillasEscaleras;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTablero")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tablero")
     private Collection<Competencia> competenciaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTablero")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tablero")
     private Collection<Juegoindividual> juegoindividualCollection;
 
     public Tablero() {

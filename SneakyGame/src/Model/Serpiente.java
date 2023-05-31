@@ -41,7 +41,7 @@ public class Serpiente implements Serializable {
     private int cantVeces;
     @JoinColumn(name = "IdCompentencia", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Competencia idCompentencia;
+    private Competencia competencia;
 
     public Serpiente() {
     }
@@ -80,12 +80,12 @@ public class Serpiente implements Serializable {
         this.cantVeces = cantVeces;
     }
 
-    public Competencia getIdCompentencia() {
-        return idCompentencia;
+    public Competencia getCompetencia() {
+        return competencia;
     }
 
-    public void setIdCompentencia(Competencia idCompentencia) {
-        this.idCompentencia = idCompentencia;
+    public void setCompetencia(Competencia competencia) {
+        this.competencia = competencia;
     }
 
     @Override

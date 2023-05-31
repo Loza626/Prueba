@@ -55,28 +55,28 @@ public class Competencia implements Serializable {
     @Basic(optional = false)
     @Column(name = "FichaJugadorUno")
     private int fichaJugadorUno;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompentencia")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "competencia")
     private Collection<Tiro> tiroCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompetencia")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "competencia")
     private Collection<Escalera> escaleraCollection;
     @JoinColumn(name = "IdFichaJugadorDos", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Ficha idFichaJugadorDos;
+    private Ficha ficha;
     @JoinColumn(name = "IdFichaJugadorUno", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Ficha idFichaJugadorUno;
+    private Ficha ficha1;
     @JoinColumn(name = "IdJugadorUno", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Jugador idJugadorUno;
+    private Jugador jugador;
     @JoinColumn(name = "IdJugadorDos", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Jugador idJugadorDos;
+    private Jugador jugador1;
     @JoinColumn(name = "IdTablero", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Tablero idTablero;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompetencia")
+    private Tablero tablero;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "competencia")
     private Collection<Desbanco> desbancoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCompentencia")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "competencia")
     private Collection<Serpiente> serpienteCollection;
 
     public Competencia() {
@@ -150,44 +150,44 @@ public class Competencia implements Serializable {
         this.escaleraCollection = escaleraCollection;
     }
 
-    public Ficha getIdFichaJugadorDos() {
-        return idFichaJugadorDos;
+    public Ficha getFicha() {
+        return ficha;
     }
 
-    public void setIdFichaJugadorDos(Ficha idFichaJugadorDos) {
-        this.idFichaJugadorDos = idFichaJugadorDos;
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
     }
 
-    public Ficha getIdFichaJugadorUno() {
-        return idFichaJugadorUno;
+    public Ficha getFicha1() {
+        return ficha1;
     }
 
-    public void setIdFichaJugadorUno(Ficha idFichaJugadorUno) {
-        this.idFichaJugadorUno = idFichaJugadorUno;
+    public void setFicha1(Ficha ficha1) {
+        this.ficha1 = ficha1;
     }
 
-    public Jugador getIdJugadorUno() {
-        return idJugadorUno;
+    public Jugador getJugador() {
+        return jugador;
     }
 
-    public void setIdJugadorUno(Jugador idJugadorUno) {
-        this.idJugadorUno = idJugadorUno;
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
     }
 
-    public Jugador getIdJugadorDos() {
-        return idJugadorDos;
+    public Jugador getJugador1() {
+        return jugador1;
     }
 
-    public void setIdJugadorDos(Jugador idJugadorDos) {
-        this.idJugadorDos = idJugadorDos;
+    public void setJugador1(Jugador jugador1) {
+        this.jugador1 = jugador1;
     }
 
-    public Tablero getIdTablero() {
-        return idTablero;
+    public Tablero getTablero() {
+        return tablero;
     }
 
-    public void setIdTablero(Tablero idTablero) {
-        this.idTablero = idTablero;
+    public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
     }
 
     public Collection<Desbanco> getDesbancoCollection() {
