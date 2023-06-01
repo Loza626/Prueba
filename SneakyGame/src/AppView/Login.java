@@ -31,6 +31,10 @@ public final class Login extends javax.swing.JFrame {
         return retValue;
     }
 
+    public JButton getBtnSignUp() {
+        return btnSignUp;
+    }
+
     public JButton getBtnClose() {
         return btnClose;
     }
@@ -66,7 +70,7 @@ public final class Login extends javax.swing.JFrame {
         btnSignUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(265, 172));
+        setLocation(new java.awt.Point(275, 172));
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -122,7 +126,7 @@ public final class Login extends javax.swing.JFrame {
         txtUsuario.setFont(new java.awt.Font("Arial Black", 3, 14)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(183, 183, 183));
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsuario.setText("Usuario");
+        txtUsuario.setText("Usuario o correo");
         txtUsuario.setBorder(null);
         txtUsuario.setCaretColor(new java.awt.Color(0, 0, 0));
         txtUsuario.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);

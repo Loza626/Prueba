@@ -34,13 +34,35 @@ public class JugadorDAO extends Database {
         return responce;
     }
 
+    public Boolean CheckPlayerData(String username, String email) throws SQLException {
+        Boolean check = false;
+        try {
+            con = GetSqlConnection();
+            ps = con.prepareStatement("select * from JUGADOR where Username = ? or Correo = ?");
+            ps.setString(1, username);
+            ps.setString(2, email);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                check = true;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Error", 0);
+        } finally {
+            con.close();
+            rs.close();
+            ps.close();
+        }
+        return check;
+    }
+
     public Jugador Login(String user, String password) throws SQLException {
         Jugador jugador = null;
         try {
             con = GetSqlConnection();
-            ps = con.prepareStatement("select * from JUGADOR where Username = ? and CONVERT(varchar(max), DECRYPTBYPASSPHRASE('SystemSneakyGame',Password) ) = ?");
+            ps = con.prepareStatement("select * from JUGADOR where (Username = ? or Correo = ?) and CONVERT(varchar(max), DECRYPTBYPASSPHRASE('SystemSneakyGame',Password) ) = ?");
             ps.setString(1, user);
-            ps.setString(2, password);
+            ps.setString(2, user);
+            ps.setString(3, password);
             rs = ps.executeQuery();
             while (rs.next()) {
                 jugador = new Jugador();
