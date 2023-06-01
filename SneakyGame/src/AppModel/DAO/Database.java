@@ -17,7 +17,7 @@ public class Database {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(Url, User, Password);
         } catch (ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "Error en  la conección al servidor", 0);
+            JOptionPane.showMessageDialog(null, e, "Error en  la conexión al servidor", 0);
         }
         return con;
     }

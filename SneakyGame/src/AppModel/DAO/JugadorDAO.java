@@ -26,6 +26,7 @@ public class JugadorDAO extends Database {
             int upload = ps.executeUpdate();
             responce = upload != 0;
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Error", 0);
         } finally {
             con.close();
             ps.close();
@@ -50,7 +51,7 @@ public class JugadorDAO extends Database {
                 jugador.setPartidasGanadas(rs.getInt("PartidasGanadas"));
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "Error en el servidor", 0);
+            JOptionPane.showMessageDialog(null, e, "Error", 0);
         } finally {
             con.close();
             rs.close();
