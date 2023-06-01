@@ -1,6 +1,6 @@
-package JavaSwingPersonalisations;
+package JavaSwing;
 
-import JavaSwingPersonalisations.ModernScrollBarUI;
+import JavaSwing.ModernScrollBarUI;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JScrollBar;

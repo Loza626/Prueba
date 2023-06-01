@@ -1,4 +1,4 @@
-package JavaSwingPersonalisations;
+package JavaSwing;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

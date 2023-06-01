@@ -1,6 +1,6 @@
 package Config;
 
-import Controller.Controller;
+import AppController.Controller;
 
 public class Application {
 

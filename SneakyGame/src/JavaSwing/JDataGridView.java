@@ -1,4 +1,4 @@
-package JavaSwingPersonalisations;
+package JavaSwing;
 
 import java.awt.Color;
 import java.awt.Component;

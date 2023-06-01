@@ -1,13 +1,21 @@
-package View;
+package AppView;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
-public class Login extends javax.swing.JFrame {
+public final class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        this.ResizeImage(this.imgIcon, "src/AppImages/SneakyGame.png");
+        this.ResizeImage(this.imgIcon, "src/Resources/SneakyGame.png");
+        setIconImage(getIconImage());
     }
 
     public void ResizeImage(JLabel lbl, String url) {
@@ -15,6 +23,12 @@ public class Login extends javax.swing.JFrame {
         Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH));
         lbl.setIcon(icono);
         this.repaint();
+    }
+
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Resources/favicon.jpeg"));
+        return retValue;
     }
 
     public JButton getBtnClose() {
@@ -52,12 +66,8 @@ public class Login extends javax.swing.JFrame {
         btnSignUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
         setLocation(new java.awt.Point(265, 172));
         setUndecorated(true);
-        setResizable(false);
-        setType(java.awt.Window.Type.POPUP);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -161,7 +171,6 @@ public class Login extends javax.swing.JFrame {
         btnClose.setDefaultCapable(false);
         btnClose.setFocusPainted(false);
         btnClose.setFocusable(false);
-        btnClose.setNextFocusableComponent(btnClose);
         btnClose.setPreferredSize(new java.awt.Dimension(22, 22));
         btnClose.setVerifyInputWhenFocusTarget(false);
 
@@ -198,7 +207,6 @@ public class Login extends javax.swing.JFrame {
         btnSignUp.setDefaultCapable(false);
         btnSignUp.setFocusPainted(false);
         btnSignUp.setFocusable(false);
-        btnSignUp.setNextFocusableComponent(btnClose);
         btnSignUp.setPreferredSize(new java.awt.Dimension(22, 22));
         btnSignUp.setVerifyInputWhenFocusTarget(false);
 
@@ -254,7 +262,26 @@ public class Login extends javax.swing.JFrame {
                 .addGap(31, 31, 31))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 390));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 830, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
