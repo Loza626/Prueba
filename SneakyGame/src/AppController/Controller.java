@@ -43,6 +43,16 @@ public class Controller implements ActionListener {
         System.exit(0);
     }
 
+    public Jugador GetEntities() {
+        Jugador entities = new Jugador();
+        entities.setCorreo(signUpView.getTxtCorreo().getText());
+        entities.setNombre(signUpView.getTxtNombre().getText());
+        entities.setPartidasGanadas(0);
+        entities.setPassword(Arrays.toString(signUpView.getTxtPassword().getPassword()));
+        entities.setUsername(signUpView.getTxtUsuario().getText());
+        return entities;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
@@ -70,13 +80,7 @@ public class Controller implements ActionListener {
                 signUpView.setVisible(false);
             }
             if (e.getSource() == signUpView.getBtnSignUp()) {
-                Jugador entities = new Jugador();
-                entities.setCorreo(signUpView.getTxtCorreo().getText());
-                entities.setNombre(signUpView.getTxtNombre().getText());
-                entities.setPartidasGanadas(0);
-                entities.setPassword(Arrays.toString(signUpView.getTxtPassword().getPassword()));
-                entities.setUsername(signUpView.getTxtUsuario().getText());
-
+                Jugador entities = GetEntities();
                 // Si usuario y correo ya son usados por otro jugador entonces no va a registrar los datos en la bases de datos caso contrario se hace el registro
                 if (jugadorDAO.CheckPlayerData(entities.getUsername(), entities.getCorreo())) {
                     JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario y correo ya son utilizdos por otro jugador", "Datos usados", 2);
