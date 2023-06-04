@@ -34,15 +34,18 @@ public class Controller implements ActionListener {
         signUpView.getBtnSignUp().addActionListener(this);
     }
 
+    //La aplicacion se ejecuta desde Config
     public void StartApplication() {
         loginView.setTitle("Iniciar Sesion");
         loginView.setVisible(true);
     }
 
+    //La aplicacion deja de ejecutarse
     public void CloseApplication() {
         System.exit(0);
     }
 
+    //Obtener todos los datos para el registro del jugador
     public Jugador GetEntities() {
         Jugador entities = new Jugador();
         entities.setCorreo(signUpView.getTxtCorreo().getText());
@@ -51,6 +54,14 @@ public class Controller implements ActionListener {
         entities.setPassword(Arrays.toString(signUpView.getTxtPassword().getPassword()));
         entities.setUsername(signUpView.getTxtUsuario().getText());
         return entities;
+    }
+
+    //Validar  el registro del jugador
+    public Boolean ValidateSignUp(Jugador entities) {
+        return !(/*Inicio de la condicion*/(entities.getUsername().length() < 9 || "Usuario".equals(entities.getUsername()))
+                || (entities.getNombre().length() < 4 || "Nombre".equals(entities.getNombre()))
+                || (entities.getCorreo().length() < 5 || "Correo electronico".equals(entities.getCorreo()))
+                || (entities.getPassword().length() < 5 || "Password".equals(loginView.getTxtPassword().getText()))/*Fin de la condicion*/);
     }
 
     @Override
@@ -81,14 +92,17 @@ public class Controller implements ActionListener {
             }
             if (e.getSource() == signUpView.getBtnSignUp()) {
                 Jugador entities = GetEntities();
-                // Si usuario y correo ya son usados por otro jugador entonces no va a registrar los datos en la bases de datos caso contrario se hace el registro
-                if (jugadorDAO.CheckPlayerData(entities.getUsername(), entities.getCorreo())) {
-                    JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario y correo ya son utilizdos por otro jugador", "Datos usados", 2);
-                } else {
-                    if (jugadorDAO.SignUp(entities)) {
-                        JOptionPane.showMessageDialog(signUpView, "Tus datos se registraron exitosamente", "En hora buena", 1);
-                        signUpView.setVisible(false);
+                if (ValidateSignUp(entities)) {
+                    if (jugadorDAO.CheckPlayerData(entities.getUsername(), entities.getCorreo())) {
+                        JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario y correo ya son utilizdos por otro jugador", "Datos usados", 2);
+                    } else {
+                        if (jugadorDAO.SignUp(entities)) {
+                            JOptionPane.showMessageDialog(signUpView, "Tus datos se registraron exitosamente", "En hora buena", 1);
+                            signUpView.setVisible(false);
+                        }
                     }
+                } else {
+                    JOptionPane.showMessageDialog(signUpView, "Por favor registrese de manera corrrecta", "Datos erroneos", 2);
                 }
             }
         } catch (SQLException ex) {

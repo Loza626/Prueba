@@ -208,7 +208,7 @@ public class SignUp extends javax.swing.JFrame {
         txtPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtPassword.setForeground(new java.awt.Color(153, 153, 153));
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPassword.setText("jPasswordField1");
+        txtPassword.setText("Password");
         txtPassword.setAutoscrolls(false);
         txtPassword.setBorder(null);
         txtPassword.setCaretColor(new java.awt.Color(255, 255, 255));
