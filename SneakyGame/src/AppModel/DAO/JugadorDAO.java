@@ -23,8 +23,7 @@ public class JugadorDAO extends Database {
             ps.setString(3, jugador.getCorreo());
             ps.setInt(4, jugador.getPartidasGanadas());
             ps.setString(5, jugador.getPassword());
-            int upload = ps.executeUpdate();
-            responce = upload != 0;
+            responce = ps.executeUpdate() != 0;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e, "Error", 0);
         } finally {
@@ -42,9 +41,7 @@ public class JugadorDAO extends Database {
             ps.setString(1, username);
             ps.setString(2, email);
             rs = ps.executeQuery();
-            while (rs.next()) {
-                check = true;
-            }
+            check = rs.next();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e, "Error", 0);
         } finally {
