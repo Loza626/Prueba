@@ -66,7 +66,7 @@ public class Controller implements ActionListener {
 
     private boolean PasswordIncorrect(char[] input) {
         String pass = new String(input);
-        return ("Password".equals(pass) || pass.length() < 5);
+        return ("Password".equals(pass) || pass.length() <= 5);
     }
 
     @Override
