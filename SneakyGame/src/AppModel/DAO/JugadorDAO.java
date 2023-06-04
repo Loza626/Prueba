@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class JugadorDAO extends Database {
@@ -12,26 +13,6 @@ public class JugadorDAO extends Database {
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
-
-    public Boolean SignUp(Jugador jugador) throws SQLException {
-        Boolean responce = false;
-        try {
-            con = GetSqlConnection();
-            ps = con.prepareStatement("insert into JUGADOR(Username,Nombre,Correo,PartidasGanadas,Password) values (?,?,?,?,ENCRYPTBYPASSPHRASE('SystemSneakyGame',?))");
-            ps.setString(1, jugador.getUsername());
-            ps.setString(2, jugador.getNombre());
-            ps.setString(3, jugador.getCorreo());
-            ps.setInt(4, jugador.getPartidasGanadas());
-            ps.setString(5, jugador.getPassword());
-            responce = ps.executeUpdate() != 0;
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "Error", 0);
-        } finally {
-            con.close();
-            ps.close();
-        }
-        return responce;
-    }
 
     public Boolean CheckPlayerData(String username, String email) throws SQLException {
         Boolean check = false;
@@ -42,14 +23,42 @@ public class JugadorDAO extends Database {
             ps.setString(2, email);
             rs = ps.executeQuery();
             check = rs.next();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "Error", 0);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", 0);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", 0);
         } finally {
             con.close();
             rs.close();
             ps.close();
         }
         return check;
+    }
+
+    public Boolean SignUp(Jugador jugador) throws SQLException {
+        Boolean responce = false;
+        if (!CheckPlayerData(jugador.getUsername(), jugador.getCorreo())) {
+            try {
+                con = GetSqlConnection();
+                ps = con.prepareStatement("insert into JUGADOR(Username,Nombre,Correo,PartidasGanadas,Password) values (?,?,?,?,ENCRYPTBYPASSPHRASE('SystemSneakyGame',?))");
+                ps.setString(1, jugador.getUsername());
+                ps.setString(2, jugador.getNombre());
+                ps.setString(3, jugador.getCorreo());
+                ps.setInt(4, jugador.getPartidasGanadas());
+                ps.setString(5, Arrays.toString(jugador.getPassword()));
+                responce = ps.executeUpdate() != 0;
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex, "Error", 0);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex, "Error", 0);
+            } finally {
+                con.close();
+                ps.close();
+            }
+        } else {
+            responce = false;
+        }
+        return responce;
     }
 
     public Jugador Login(String user, String password) throws SQLException {
@@ -69,8 +78,10 @@ public class JugadorDAO extends Database {
                 jugador.setCorreo(rs.getString("Correo"));
                 jugador.setPartidasGanadas(rs.getInt("PartidasGanadas"));
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "Error", 0);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", 0);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", 0);
         } finally {
             con.close();
             rs.close();

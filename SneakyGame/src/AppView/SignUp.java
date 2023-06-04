@@ -88,9 +88,9 @@ public class SignUp extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         btnSignUp = new javax.swing.JButton();
-        txtPassword = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -174,6 +174,21 @@ public class SignUp extends javax.swing.JFrame {
         jPanel1.add(txtCorreo);
         txtCorreo.setBounds(20, 200, 360, 38);
 
+        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
+        txtPassword.setForeground(new java.awt.Color(153, 153, 153));
+        txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPassword.setText("Password");
+        txtPassword.setAutoscrolls(false);
+        txtPassword.setBorder(null);
+        txtPassword.setCaretColor(new java.awt.Color(153, 153, 153));
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPasswordMouseClicked(evt);
+            }
+        });
+        jPanel1.add(txtPassword);
+        txtPassword.setBounds(20, 270, 360, 38);
+
         jPanel2.setBackground(new java.awt.Color(0, 0, 102));
 
         btnSignUp.setBackground(new java.awt.Color(0, 0, 102));
@@ -204,21 +219,6 @@ public class SignUp extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(30, 350, 340, 40);
-
-        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
-        txtPassword.setForeground(new java.awt.Color(153, 153, 153));
-        txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPassword.setText("Password");
-        txtPassword.setAutoscrolls(false);
-        txtPassword.setBorder(null);
-        txtPassword.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtPasswordMouseClicked(evt);
-            }
-        });
-        jPanel1.add(txtPassword);
-        txtPassword.setBounds(20, 270, 360, 38);
 
         jPanel3.setBackground(new java.awt.Color(51, 204, 0));
 

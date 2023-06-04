@@ -7,7 +7,7 @@ public class Jugador {
     private String nombre;
     private String correo;
     private int partidasGanadas;
-    private String password;
+    private char[] password;
 
     public int getId() {
         return id;
@@ -49,15 +49,15 @@ public class Jugador {
         this.partidasGanadas = partidasGanadas;
     }
 
-    public String getPassword() {
+    public char[] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(char[] password) {
         this.password = password;
     }
 
-    public Jugador(int id, String username, String nombre, String correo, int partidasGanadas, String password) {
+    public Jugador(int id, String username, String nombre, String correo, int partidasGanadas, char[] password) {
         this.id = id;
         this.username = username;
         this.nombre = nombre;
