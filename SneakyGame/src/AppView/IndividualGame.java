@@ -80,7 +80,7 @@ public class IndividualGame extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDado.setPreferredSize(new java.awt.Dimension(120, 120));
-        jPanel3.add(lblDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        jPanel3.add(lblDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         btnDado.setText("Tirar Dado");
         btnDado.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class IndividualGame extends javax.swing.JFrame {
                 btnDadoActionPerformed(evt);
             }
         });
-        jPanel3.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 190, 100, 40));
+        jPanel3.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 100, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,7 +99,7 @@ public class IndividualGame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
