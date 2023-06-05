@@ -163,7 +163,7 @@ public class SignUp extends javax.swing.JFrame {
         txtCorreo.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(153, 153, 153));
         txtCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCorreo.setText("Correo electronico");
+        txtCorreo.setText("Correo");
         txtCorreo.setAutoscrolls(false);
         txtCorreo.setBorder(null);
         txtCorreo.setCaretColor(new java.awt.Color(255, 255, 255));

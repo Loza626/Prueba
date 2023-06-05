@@ -62,6 +62,14 @@ public class Controller implements ActionListener {
         return ("Password".equals(pass) || pass.length() <= 5);
     }
 
+    private boolean FormIsEmpty(Jugador entities) {
+        String pass = new String(entities.getPassword());
+        return (("Usuario".equals(entities.getUsername()) || entities.getUsername().length() == 0)
+                && ("Nombre".equals(entities.getNombre()) || entities.getNombre().length() == 0)
+                && ("Correo".equals(entities.getCorreo()) || entities.getCorreo().length() == 0)
+                && ("Password".equals(pass) || pass.length() == 0));
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
@@ -93,26 +101,26 @@ public class Controller implements ActionListener {
             if (e.getSource() == signUpView.getBtnSignUp()) {
                 Jugador entities = GetEntities();
                 //Validar  el registro del jugador
-                if ("Usuario".equals(entities.getUsername()) && "Nombre".equals(entities.getNombre()) && "Correo electronico".equals(entities.getCorreo()) && PasswordIncorrect(entities.getPassword())) {
+                if (FormIsEmpty(entities)) {
                     JOptionPane.showMessageDialog(signUpView, "Llene todo el formulario por favor.", "Datos erroneos", 2);
-                } else if (entities.getUsername().length() <= 8 || "Usuario".equals(entities.getUsername())) {
-                    JOptionPane.showMessageDialog(signUpView, "El usuario debe de ser mayor de 8 caracteres.", "Datos erroneos", 2);
-                } else if (entities.getNombre().length() <= 7 || "Nombre".equals(entities.getNombre())) {
-                    JOptionPane.showMessageDialog(signUpView, "El nombre debe tener mas de 7 caracteres.", "Datos erroneos", 2);
-                } else if (entities.getCorreo().length() <= 9 || "Correo electronico".equals(entities.getCorreo())) {
-                    JOptionPane.showMessageDialog(signUpView, "Ingrese un correo valido y que sea mayor a 9 caracteres.", "Datos erroneos", 2);
-                } else if (PasswordIncorrect(entities.getPassword())) {
-                    JOptionPane.showMessageDialog(signUpView, "Ingrese una contraseña mayor a 5 caracteres.", "Datos erroneos", 2);
-                } else if (!PasswordIncorrect(entities.getPassword())) {
-                    if (jugadorDAO.SignUp(entities)) {
-                        loginView.setVisible(true);
-                        signUpView.setVisible(false);
-                        JOptionPane.showMessageDialog(signUpView, "Tus datos se registraron exitosamente", "En hora buena", 1);
-                    } else {
-                        JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario o correo ya son utilizdos por otro jugador", "Datos usados", 2);
-                    }
                 } else {
-                    JOptionPane.showMessageDialog(signUpView, "La contraseña debe ser mayor a 5 caracteres", "Contraseña incorrecta", 2);
+                    if (entities.getUsername().length() <= 8 || "Usuario".equals(entities.getUsername())) {
+                        JOptionPane.showMessageDialog(signUpView, "El usuario debe de ser mayor de 8 caracteres.", "Datos erroneos", 2);
+                    } else if (entities.getNombre().length() <= 7 || "Nombre".equals(entities.getNombre())) {
+                        JOptionPane.showMessageDialog(signUpView, "El nombre debe tener mas de 7 caracteres.", "Datos erroneos", 2);
+                    } else if (entities.getCorreo().length() <= 9 || "Correo".equals(entities.getCorreo())) {
+                        JOptionPane.showMessageDialog(signUpView, "Ingrese un correo valido y que sea mayor a 9 caracteres.", "Datos erroneos", 2);
+                    } else if (PasswordIncorrect(entities.getPassword())) {
+                        JOptionPane.showMessageDialog(signUpView, "Ingrese una contraseña mayor a 5 caracteres.", "Datos erroneos", 2);
+                    } else {
+                        if (jugadorDAO.SignUp(entities)) {
+                            loginView.setVisible(true);
+                            signUpView.setVisible(false);
+                            JOptionPane.showMessageDialog(signUpView, "Tus datos se registraron exitosamente", "En hora buena", 1);
+                        } else {
+                            JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario o correo ya son utilizdos por otro jugador", "Datos usados", 2);
+                        }
+                    }
                 }
             }
         } catch (SQLException | HeadlessException ex) {
