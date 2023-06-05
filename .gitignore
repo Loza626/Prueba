@@ -7,3 +7,4 @@
 # Compiled class files.
 *.class
 /SneakyGame/dist/
+/SneakyGame/build/
