@@ -14,6 +14,7 @@ public final class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
         this.ResizeImage(this.imgIcon, "src/Resources/SneakyGame.png");
         setIconImage(getIconImage());
     }
@@ -70,7 +71,7 @@ public final class Login extends javax.swing.JFrame {
         btnSignUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(275, 172));
+        setLocation(new java.awt.Point(0, 0));
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));

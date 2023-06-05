@@ -82,10 +82,12 @@ public class Controller implements ActionListener {
             if (e.getSource() == loginView.getBtnSignUp()) {
                 signUpView.setVisible(true);
                 signUpView.setTitle("Registrarme");
+                loginView.setVisible(false);
             }
 
             //SignUpView
             if (e.getSource() == signUpView.getBtnClose()) {
+                loginView.setVisible(true);
                 signUpView.setVisible(false);
             }
             if (e.getSource() == signUpView.getBtnSignUp()) {
@@ -104,6 +106,7 @@ public class Controller implements ActionListener {
                 } else if (!PasswordIncorrect(entities.getPassword())) {
                     if (jugadorDAO.SignUp(entities)) {
                         JOptionPane.showMessageDialog(signUpView, "Tus datos se registraron exitosamente", "En hora buena", 1);
+                        loginView.setVisible(true);
                         signUpView.setVisible(false);
                     } else {
                         JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario y correo ya son utilizdos por otro jugador", "Datos usados", 2);

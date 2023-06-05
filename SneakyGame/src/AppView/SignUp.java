@@ -15,6 +15,7 @@ public class SignUp extends javax.swing.JFrame {
     public SignUp() {
         initComponents();
         setIconImage(getIconImage());
+        setLocationRelativeTo(null);
     }
 
     public void ResizeImage(JLabel lbl, String url) {
@@ -97,7 +98,7 @@ public class SignUp extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(535, 145));
+        setLocation(new java.awt.Point(0, 0));
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

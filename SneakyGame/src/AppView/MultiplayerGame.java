@@ -4,6 +4,7 @@ public class MultiplayerGame extends javax.swing.JFrame {
 
     public MultiplayerGame() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
