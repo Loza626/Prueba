@@ -21,12 +21,12 @@ public class Controller implements ActionListener {
     //Interface
     Login loginView;
     SignUp signUpView;
-    PrincipalPrueba principalView;
+    IndividualGame principalView;
 
     public Controller() {
         this.loginView = new Login();
         this.signUpView = new SignUp();
-        this.principalView = new PrincipalPrueba();
+        this.principalView = new IndividualGame();
 
         loginView.getBtnLogin().addActionListener(this);
         loginView.getBtnClose().addActionListener(this);
