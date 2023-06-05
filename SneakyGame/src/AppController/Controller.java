@@ -105,9 +105,9 @@ public class Controller implements ActionListener {
                     JOptionPane.showMessageDialog(signUpView, "Ingrese una contraseña mayor a 5 caracteres.", "Datos erroneos", 2);
                 } else if (!PasswordIncorrect(entities.getPassword())) {
                     if (jugadorDAO.SignUp(entities)) {
-                        JOptionPane.showMessageDialog(signUpView, "Tus datos se registraron exitosamente", "En hora buena", 1);
                         loginView.setVisible(true);
                         signUpView.setVisible(false);
+                        JOptionPane.showMessageDialog(signUpView, "Tus datos se registraron exitosamente", "En hora buena", 1);
                     } else {
                         JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario y correo ya son utilizdos por otro jugador", "Datos usados", 2);
                     }
