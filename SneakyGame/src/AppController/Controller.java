@@ -109,7 +109,7 @@ public class Controller implements ActionListener {
                         signUpView.setVisible(false);
                         JOptionPane.showMessageDialog(signUpView, "Tus datos se registraron exitosamente", "En hora buena", 1);
                     } else {
-                        JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario y correo ya son utilizdos por otro jugador", "Datos usados", 2);
+                        JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario o correo ya son utilizdos por otro jugador", "Datos usados", 2);
                     }
                 } else {
                     JOptionPane.showMessageDialog(signUpView, "La contraseña debe ser mayor a 5 caracteres", "Contraseña incorrecta", 2);
