@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package AppView;
 
 import java.awt.Image;
@@ -12,10 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author David Hernandez
- */
 public class IndividualGame extends javax.swing.JFrame {
 
  
@@ -149,32 +141,31 @@ public class IndividualGame extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(this);
         switch (random) {
-            case 1:
+            case 1 -> {
                 this.Imagen(this.lblDado,"src/Resources/dado1.png");
                 moverLabel(random);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 this.Imagen(this.lblDado,"src/Resources/dado2.png");
                 moverLabel(random);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 this.Imagen(this.lblDado,"src/Resources/dado3.png");
                 moverLabel(random);
-                break;
-            case 4:
+            }
+            case 4 -> {
                 this.Imagen(this.lblDado,"src/Resources/dado4.png");
                 moverLabel(random);
-                break;
-            case 5:
+            }
+            case 5 -> {
                 this.Imagen(this.lblDado,"src/Resources/dado5.png");
                 moverLabel(random);
-                break;
-            case 6:
+            }
+            case 6 -> {
                 this.Imagen(this.lblDado,"src/Resources/dado6.png");
                 moverLabel(random);
-                break;
-            default:
-                throw new AssertionError();
+            }
+            default -> throw new AssertionError();
         }
     }//GEN-LAST:event_btnDadoActionPerformed
 
@@ -218,42 +209,48 @@ public class IndividualGame extends javax.swing.JFrame {
         lblTapa.setLocation(x, y);
 
         switch (posicionJugador) {
-            case 13: // Serpiente - Casilla 13 a 8
+            case 13 -> {
+                // Serpiente - Casilla 13 a 8
                 posicionJugador = 8;
                 JOptionPane.showMessageDialog(null, "Ups! Pisaste una serpinete" +
                         "\nRegresaras a la posicion 8");
                 lblTapa.setLocation(825, 546);
-                break;
-            case 14: // Escalera - Casilla 14 a 34
+            }
+            case 14 -> {
+                // Escalera - Casilla 14 a 34
                 posicionJugador = 25;
                 JOptionPane.showMessageDialog(null, "Oh! una escalera" +
                         "\nAvance a la posicion 25");
                 lblTapa.setLocation(709, 288);
-                break;
-            case 4: // Escalera - Casilla 16 a 24
+            }
+            case 4 -> {
+                // Escalera - Casilla 16 a 24
                 posicionJugador = 17;
                 JOptionPane.showMessageDialog(null, "Oh! una escalera" +
                         "\nAvance a la posicion 17");
                 lblTapa.setLocation(367, 420);
-                break;
-            case 23: // Escalera - Casilla 23 a 43
+            }
+            case 23 -> {
+                // Escalera - Casilla 23 a 43
                 posicionJugador = 38;
                 JOptionPane.showMessageDialog(null, "Oh! una escalera" +
                         "\nAvance a la posicion 38");
                 lblTapa.setLocation(250, 160);
-                break;
-            case 41: // Serpiente - Casilla 41 a 21
+            }
+            case 41 -> {
+                // Serpiente - Casilla 41 a 21
                 posicionJugador = 21;
                 JOptionPane.showMessageDialog(null, "Ups! Piasate una serpinete" +
                         "\nRegresaras a la posicion 21");
                 lblTapa.setLocation(16, 292);
-                break;
-            case 49: // Serpiente - Casilla 49 a 29
+            }
+            case 49 -> {
+                // Serpiente - Casilla 49 a 29
                 posicionJugador = 29;
                 JOptionPane.showMessageDialog(null, "Ups! Pisaste una serpinete" +
                         "\nRegresaras a la posicion 29");
                 lblTapa.setLocation(930, 285);
-                break;
+            }
         }
 
         if (posicionJugador == 50) {

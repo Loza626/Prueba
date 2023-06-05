@@ -21,12 +21,12 @@ public class Controller implements ActionListener {
     //Interface
     Login loginView;
     SignUp signUpView;
-    Principal principalView;
+    IndividualGame principalView;
 
     public Controller() {
         this.loginView = new Login();
         this.signUpView = new SignUp();
-        this.principalView = new Principal();
+        this.principalView = new IndividualGame();
 
         loginView.getBtnLogin().addActionListener(this);
         loginView.getBtnClose().addActionListener(this);
@@ -91,7 +91,9 @@ public class Controller implements ActionListener {
             if (e.getSource() == signUpView.getBtnSignUp()) {
                 Jugador entities = GetEntities();
                 //Validar  el registro del jugador
-                if (entities.getUsername().length() <= 8 || "Usuario".equals(entities.getUsername())) {
+                if ("Usuario".equals(entities.getUsername()) && "Nombre".equals(entities.getNombre()) && "Correo electronico".equals(entities.getCorreo()) && PasswordIncorrect(entities.getPassword())) {
+                    JOptionPane.showMessageDialog(signUpView, "Llene todo el formulario por favor.", "Datos erroneos", 2);
+                } else if (entities.getUsername().length() <= 8 || "Usuario".equals(entities.getUsername())) {
                     JOptionPane.showMessageDialog(signUpView, "El usuario debe de ser mayor de 8 caracteres.", "Datos erroneos", 2);
                 } else if (entities.getNombre().length() <= 7 || "Nombre".equals(entities.getNombre())) {
                     JOptionPane.showMessageDialog(signUpView, "El nombre debe tener mas de 7 caracteres.", "Datos erroneos", 2);
@@ -99,17 +101,15 @@ public class Controller implements ActionListener {
                     JOptionPane.showMessageDialog(signUpView, "Ingrese un correo valido y que sea mayor a 9 caracteres.", "Datos erroneos", 2);
                 } else if (PasswordIncorrect(entities.getPassword())) {
                     JOptionPane.showMessageDialog(signUpView, "Ingrese una contraseña mayor a 5 caracteres.", "Datos erroneos", 2);
-                } else {
-                    if (!PasswordIncorrect(entities.getPassword())) {
-                        if (jugadorDAO.SignUp(entities)) {
-                            JOptionPane.showMessageDialog(signUpView, "Tus datos se registraron exitosamente", "En hora buena", 1);
-                            signUpView.setVisible(false);
-                        } else {
-                            JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario y correo ya son utilizdos por otro jugador", "Datos usados", 2);
-                        }
+                } else if (!PasswordIncorrect(entities.getPassword())) {
+                    if (jugadorDAO.SignUp(entities)) {
+                        JOptionPane.showMessageDialog(signUpView, "Tus datos se registraron exitosamente", "En hora buena", 1);
+                        signUpView.setVisible(false);
                     } else {
-                        JOptionPane.showMessageDialog(signUpView, "La contraseña debe ser mayor a 5 caracteres", "Contraseña incorrecta", 2);
+                        JOptionPane.showMessageDialog(signUpView, "Lo sentimos, usuario y correo ya son utilizdos por otro jugador", "Datos usados", 2);
                     }
+                } else {
+                    JOptionPane.showMessageDialog(signUpView, "La contraseña debe ser mayor a 5 caracteres", "Contraseña incorrecta", 2);
                 }
             }
         } catch (SQLException | HeadlessException ex) {
