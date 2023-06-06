@@ -20,7 +20,6 @@ public class IndividualGame extends javax.swing.JFrame {
         this.Imagen(this.lblImagen, "src/Resources/tablero.jpg");
         this.Imagen(this.lblTapa, "src/Resources/tapa.png");
         this.Imagen(this.lblDado, "src/Resources/dado0.png");
-
         lblImagen.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -28,6 +27,7 @@ public class IndividualGame extends javax.swing.JFrame {
             }
         });
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -100,26 +100,9 @@ public class IndividualGame extends javax.swing.JFrame {
 
         PanelPrincipal.add(DadoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 270, 240, 270));
 
-        javax.swing.GroupLayout TablePanelLayout = new javax.swing.GroupLayout(TablePanel);
-        TablePanel.setLayout(TablePanelLayout);
-        TablePanelLayout.setHorizontalGroup(
-            TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TablePanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(lblTapa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(885, Short.MAX_VALUE))
-            .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE))
-        );
-        TablePanelLayout.setVerticalGroup(
-            TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TablePanelLayout.createSequentialGroup()
-                .addContainerGap(448, Short.MAX_VALUE)
-                .addComponent(lblTapa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-            .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE))
-        );
+        TablePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        TablePanel.add(lblTapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 450, 70, 70));
+        TablePanel.add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 540));
 
         PanelPrincipal.add(TablePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 540));
 
@@ -140,9 +123,7 @@ public class IndividualGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDadoActionPerformed
-        int nuevaPosicion;
         int random = (int) (Math.random() * 6) + 1;
-
         this.setLocationRelativeTo(this);
         switch (random) {
             case 1 -> {
@@ -169,7 +150,8 @@ public class IndividualGame extends javax.swing.JFrame {
                 this.Imagen(this.lblDado, "src/Resources/dado6.png");
                 moverLabel(random);
             }
-            default -> throw new AssertionError();
+            default ->
+                throw new AssertionError();
         }
     }//GEN-LAST:event_btnDadoActionPerformed
 
@@ -199,10 +181,8 @@ public class IndividualGame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IndividualGame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new IndividualGame().setVisible(true);
         });
     }
 
@@ -279,19 +259,12 @@ public class IndividualGame extends javax.swing.JFrame {
             }
         }
 
-        if (posicionJugador == 50) {
+        if (posicionJugador == 50 || posicionJugador >= 50) {
             lblTapa.setLocation(x, y);
             JOptionPane.showMessageDialog(null, "¡¡¡Felicidades, Usted ha ganado el juego!!!"
                     + "\nHas ganado el juego");
             return;
-        } else if (posicionJugador >= 50) {
-            JOptionPane.showMessageDialog(null, "Perdiste el juego :("
-                    + "\nVuelve a Intentarlo");
-            posicionJugador = 0;
-            lblTapa.setLocation(-60, 550);
-            this.Imagen(this.lblDado, "src/Resources/dado0.png");
-        }
-
+        } 
         // lblTapa.repaint(); // Actualizar la posición del label en el panel
     }
 
