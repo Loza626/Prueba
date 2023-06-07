@@ -4,9 +4,9 @@ public class Tablero {
 
     private int id;
     private String ImagenTable;
+    private int numFilas;
+    private int numColumnas;
     private int totalCasillas;
-    private int casillasSerpientes;
-    private int casillasEscaleras;
 
     public int getId() {
         return id;
@@ -24,6 +24,22 @@ public class Tablero {
         this.ImagenTable = ImagenTable;
     }
 
+    public int getNumFilas() {
+        return numFilas;
+    }
+
+    public void setNumFilas(int numFilas) {
+        this.numFilas = numFilas;
+    }
+
+    public int getNumColumnas() {
+        return numColumnas;
+    }
+
+    public void setNumColumnas(int numColumnas) {
+        this.numColumnas = numColumnas;
+    }
+
     public int getTotalCasillas() {
         return totalCasillas;
     }
@@ -32,28 +48,12 @@ public class Tablero {
         this.totalCasillas = totalCasillas;
     }
 
-    public int getCasillasSerpientes() {
-        return casillasSerpientes;
-    }
-
-    public void setCasillasSerpientes(int casillasSerpientes) {
-        this.casillasSerpientes = casillasSerpientes;
-    }
-
-    public int getCasillasEscaleras() {
-        return casillasEscaleras;
-    }
-
-    public void setCasillasEscaleras(int casillasEscaleras) {
-        this.casillasEscaleras = casillasEscaleras;
-    }
-
-    public Tablero(int id, String ImagenTable, int totalCasillas, int casillasSerpientes, int casillasEscaleras) {
+    public Tablero(int id, String ImagenTable, int numFilas, int numColumnas, int totalCasillas) {
         this.id = id;
         this.ImagenTable = ImagenTable;
+        this.numFilas = numFilas;
+        this.numColumnas = numColumnas;
         this.totalCasillas = totalCasillas;
-        this.casillasSerpientes = casillasSerpientes;
-        this.casillasEscaleras = casillasEscaleras;
     }
 
     public Tablero() {
