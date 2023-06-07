@@ -1,7 +1,7 @@
 package AppController;
 
+import AppModel.JugadorDAO;
 import AppView.*;
-import AppModel.DAO.*;
 import AppModel.*;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -33,6 +33,7 @@ public class Controller implements ActionListener {
         loginView.getBtnSignUp().addActionListener(this);
         signUpView.getBtnClose().addActionListener(this);
         signUpView.getBtnSignUp().addActionListener(this);
+        principalView.getBtnClose().addActionListener(this);
     }
 
     //La aplicacion se ejecuta desde Config
@@ -79,6 +80,7 @@ public class Controller implements ActionListener {
                 if (jugador != null) {
                     principalView.setVisible(true);
                     principalView.setTitle("Principal");
+                    principalView.getLblUsername().setText(jugador.getUsername());
                     loginView.setVisible(false);
                 } else {
                     JOptionPane.showMessageDialog(loginView, "Usuario o contraseña incorrectos");
@@ -122,6 +124,11 @@ public class Controller implements ActionListener {
                         }
                     }
                 }
+            }
+
+            //PrincipalView
+            if (e.getSource() == principalView.getBtnClose()) {
+                CloseApplication();
             }
         } catch (SQLException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, e, "Error", 0);

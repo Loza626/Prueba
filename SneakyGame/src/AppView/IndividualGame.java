@@ -1,6 +1,7 @@
 package AppView;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.Icon;
@@ -16,16 +17,23 @@ public class IndividualGame extends javax.swing.JFrame {
 
     public IndividualGame() {
         initComponents();
+        setIconImage(getIconImage());
         this.setLocationRelativeTo(this);
-        this.Imagen(this.lblImagen, "src/Resources/tablero.jpg");
-        this.Imagen(this.lblTapa, "src/Resources/tapa.png");
-        this.Imagen(this.lblDado, "src/Resources/dado0.png");
+        this.ReziseImage(this.lblImagen, "src/Resources/tablero.jpg");
+        this.ReziseImage(this.lblTapa, "src/Resources/tapa.png");
+        this.ReziseImage(this.lblDado, "src/Resources/dado0.png");
         lblImagen.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
                 mostrarPosicionMouse(e.getX(), e.getY());
             }
         });
+    }
+
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Resources/favicon.jpeg"));
+        return retValue;
     }
 
     @SuppressWarnings("unchecked")
@@ -43,6 +51,7 @@ public class IndividualGame extends javax.swing.JFrame {
         lblImagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
         setResizable(false);
 
         PanelPrincipal.setPreferredSize(new java.awt.Dimension(960, 540));
@@ -127,27 +136,27 @@ public class IndividualGame extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         switch (random) {
             case 1 -> {
-                this.Imagen(this.lblDado, "src/Resources/dado1.png");
+                this.ReziseImage(this.lblDado, "src/Resources/dado1.png");
                 moverLabel(random);
             }
             case 2 -> {
-                this.Imagen(this.lblDado, "src/Resources/dado2.png");
+                this.ReziseImage(this.lblDado, "src/Resources/dado2.png");
                 moverLabel(random);
             }
             case 3 -> {
-                this.Imagen(this.lblDado, "src/Resources/dado3.png");
+                this.ReziseImage(this.lblDado, "src/Resources/dado3.png");
                 moverLabel(random);
             }
             case 4 -> {
-                this.Imagen(this.lblDado, "src/Resources/dado4.png");
+                this.ReziseImage(this.lblDado, "src/Resources/dado4.png");
                 moverLabel(random);
             }
             case 5 -> {
-                this.Imagen(this.lblDado, "src/Resources/dado5.png");
+                this.ReziseImage(this.lblDado, "src/Resources/dado5.png");
                 moverLabel(random);
             }
             case 6 -> {
-                this.Imagen(this.lblDado, "src/Resources/dado6.png");
+                this.ReziseImage(this.lblDado, "src/Resources/dado6.png");
                 moverLabel(random);
             }
             default ->
@@ -264,11 +273,11 @@ public class IndividualGame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "¡¡¡Felicidades, Usted ha ganado el juego!!!"
                     + "\nHas ganado el juego");
             return;
-        } 
+        }
         // lblTapa.repaint(); // Actualizar la posición del label en el panel
     }
 
-    private void Imagen(JLabel lbl, String ruta) {
+    private void ReziseImage(JLabel lbl, String ruta) {
         this.imagen = new ImageIcon(ruta);
         this.icono = new ImageIcon(
                 this.imagen.getImage().getScaledInstance(

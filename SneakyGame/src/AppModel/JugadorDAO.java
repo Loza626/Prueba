@@ -1,5 +1,6 @@
-package AppModel.DAO;
+package AppModel;
 
+import AppModel.Database;
 import AppModel.Jugador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
