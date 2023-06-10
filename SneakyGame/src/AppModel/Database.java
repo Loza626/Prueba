@@ -10,7 +10,7 @@ public class Database {
     private Connection con;
     private final String User = "root";
     private final String Password = "123456";
-    private final String Url = "jdbc:sqlserver://localhost:1433;databaseName=SneakyGameDB";
+    private final String Url = "jdbc:sqlserver://localhost:1433;databaseName=SneakyGameDB;trustServerCertificate=true";
 
     protected Connection GetSqlConnection() {
         try {
